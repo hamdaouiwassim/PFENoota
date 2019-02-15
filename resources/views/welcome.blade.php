@@ -62,7 +62,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                 <li class=""><a class="btn btn-primary" href="/login">الدخول</a></li>
-                <li class="enroll-btn"><a href="/register">انضم</a></li>
+                <li class=""><a class="btn btn-success" href="/register">انضم</a></li>
                 <li class="enroll-btn"><a href="/contact">اتصل بنا</a></li>
             </ul>
         </div><!--/.navbar-collapse -->
@@ -118,7 +118,7 @@
                 <p>كن جزءاً من مجتمع معرفي من الكتاب والقراء، لتبادل المعارف والمعلومات وتنمية المهارات</p>
             </div>
             <div class="col-md-4 col-sm-4 col-md-12 col-service">
-                <img src="/public/images/udacity-scholarships.png" alt="Udacity Scholarships">
+                {{--<img src="/public/images/udacity-scholarships.png" alt="Udacity Scholarships">--}}
                 <h4>فرص للتفاعل مع مجتمع الكتاب المحترفيين </h4>
                 <p>احصل على ميزة التفاعل مع محترفي الكتابة التونسيين</p>
             </div>
@@ -212,7 +212,7 @@
                     <div class="bs-wizard-dot step-3"></div>
                     <div class="steps-sec-text">
                         <h4>٣.  كن كاتبا محترفا من الطراز العالمي</h4>
-                        <div class="bs-wizard-info text-center">كن واحدا من ١٠٠٠الكتاب الذين شهد التاررخ بكتاباتهم</div>
+                        <div class="bs-wizard-info text-center">كن واحدا من الكتاب الذين شهد التاررخ بكتاباتهم</div>
                     </div>
                 </div>
 

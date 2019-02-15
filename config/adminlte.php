@@ -110,26 +110,32 @@ return [
     'menu' => [
         'الاساسيات',
         [
-            'text' => 'كتاباتي',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+            'text' => 'اكتب',
+            'url'  => '/new-story',
+            'icon'  => 'plus-square-o',
+            'icon_color'=>'blue',
         ],
+        [
+            'text' => 'كتاباتي',
+            'url'  => '/blog',
+            'icon' => 'files-o',
+            'icon_color'=>'blue',
+        ],
+        'حسابي لاشخصي',
         [
             'text'        => 'معلوماتي الشخصية',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'url'         => '/home',
+            'icon'        => 'user',
+            'icon_color'=>'green',
         ],
-        'ACCOUNT SETTINGS',
         [
             'text' => 'صفحتي',
-            'url'  => 'admin/settings',
+            'url'  => '/journal',
             'icon' => 'user',
         ],
         [
             'text' => 'تغيير كلمة العبور',
-            'url'  => 'admin/settings',
+            'url'  => '/changepassword',
             'icon' => 'lock',
         ],
         [
@@ -138,35 +144,29 @@ return [
             'submenu' => [
                 [
                     'text' => 'كتابي المفضلون',
-                    'url'  => '/favorites',
+                    'url'  => '/favorites-writer',
+                    'icon_color'=>'red',
                 ],
                 [
                     'text' => 'اشهر الكتاب',
                     'url'  => '/topwriters',
+                    'icon_color'=>'orange',
                 ],
                 [
                     'text' => 'كتابات الشهر',
-                    'url'  => '/month_writing_contest',
+                    'url'  => '/monthly_writing_contest',
+
+                    'icon_color'=>'yellow',
                 ],
                 [
                     'text' => 'احصائيات',
-                    'url'  => '#',
+                    'url'  => '/statistics',
+
+                    'icon_color'=>'blue',
                 ],
             ],
         ],
-        'LABELS',
-        [
-            'text'       => 'Important',
-            'icon_color' => 'red',
-        ],
-        [
-            'text'       => 'Warning',
-            'icon_color' => 'yellow',
-        ],
-        [
-            'text'       => 'Information',
-            'icon_color' => 'aqua',
-        ],
+
     ],
 
     /*
