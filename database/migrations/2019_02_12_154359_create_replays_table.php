@@ -14,7 +14,10 @@ class CreateReplaysTable extends Migration
     public function up()
     {
         Schema::create('replays', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('Id');
+            $table->integer('Idcomment');
+            $table->integer('Iduser');
+            $table->text('Content');
             $table->timestamps();
         });
     }
