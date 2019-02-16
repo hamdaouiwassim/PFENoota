@@ -7,16 +7,13 @@
     <script src="/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
-
         a {
             text-decoration: none;
         }
-
         body {
             font-weight: 600;
             color: #343434;
         }
-
         .error_section {
             display: flex;
             justify-content: center;
@@ -81,7 +78,6 @@
             box-shadow: 0px 4px 15px 2px rgba(0, 0, 0, 0.1), inset 0px -3px 7px 0px rgba(0, 0, 0, 0.2);
             transition: ease-out 0.2s all;
         }
-
     </style>
 </head>
 <body class="error_section">

@@ -116,8 +116,8 @@ return [
             'icon_color'=>'blue',
         ],
         [
-            'text' => 'كتاباتي',
-            'url'  => '/blog',
+            'text' => 'صفحتي',
+            'url'  => '/journal',
             'icon' => 'files-o',
             'icon_color'=>'blue',
         ],
@@ -127,11 +127,6 @@ return [
             'url'         => '/home',
             'icon'        => 'user',
             'icon_color'=>'green',
-        ],
-        [
-            'text' => 'صفحتي',
-            'url'  => '/journal',
-            'icon' => 'user',
         ],
         [
             'text' => 'تغيير كلمة العبور',
@@ -144,17 +139,17 @@ return [
             'submenu' => [
                 [
                     'text' => 'كتابي المفضلون',
-                    'url'  => '/favorites-writer',
+                    'url'  => '/favourit-writers',
                     'icon_color'=>'red',
                 ],
                 [
                     'text' => 'اشهر الكتاب',
-                    'url'  => '/topwriters',
+                    'url'  => '/top-writers',
                     'icon_color'=>'orange',
                 ],
                 [
                     'text' => 'كتابات الشهر',
-                    'url'  => '/monthly_writing_contest',
+                    'url'  => '/monthly-writing-contest',
 
                     'icon_color'=>'yellow',
                 ],
