@@ -14,7 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('/aboutus', function () {
+    return view('Aboutus');
+});
+Route::get('/contact', function () {
+        return view('Contact');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
