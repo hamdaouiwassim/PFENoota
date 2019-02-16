@@ -64,6 +64,7 @@
                 <li class=""><a class="btn btn-primary" href="/login">الدخول</a></li>
                 <li class=""><a class="btn btn-success" href="/register">انضم</a></li>
                 <li class="enroll-btn"><a href="/contact">اتصل بنا</a></li>
+                <li class="enroll-btn"><a href="/aboutus">عن نوته</a></li>
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
