@@ -25,4 +25,28 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function new_story()
+    {
+        return view('newstory');
+    }
+    public function journal()
+    {
+        return view('home');
+    }
+    public function favourite_writers()
+    {
+        return view('home');
+    }
+    public function top_writers()
+    {
+        return view('home');
+    }
+    public function monthly_writing_contest()
+    {
+        return view('home');
+    }
+    public function statistics()
+    {
+        return view('home');
+    }
 }

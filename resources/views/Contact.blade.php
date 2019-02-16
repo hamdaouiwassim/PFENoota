@@ -74,7 +74,7 @@
 <section class="main-banner">
     <div class="container">
        
-       </div>
+    </div>
 </section>
 <!-- Footer Section -->
 <footer>
