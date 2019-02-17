@@ -265,7 +265,7 @@ tinymce.addI18n('ar_TN',{
 "Image title": "عنوان الصورة",
 "Border width": "عرض المحيط",
 "Border style": "شكل المحيط",
-"Error": "\u00c9rreur",
+"Error": "خطأ",
 "Warn": "تحذير",
 "Valid": "صائب",
 "To open the popup, press Shift+Enter": "لفتح النافذة اضغط Shift+Entr\u00e9e",

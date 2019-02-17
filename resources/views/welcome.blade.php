@@ -61,10 +61,14 @@
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class=""><a class="btn btn-primary" href="/login">الدخول</a></li>
-                <li class=""><a class="btn btn-success" href="/register">انضم</a></li>
-                <li class="enroll-btn"><a href="/contact">اتصل بنا</a></li>
-                <li class="enroll-btn"><a href="/aboutus">عن نوته</a></li>
+                <li ><a href="/contact">اتصل بنا</a></li>
+                <li ><a href="/aboutus">عن نوته</a></li>
+                @if (Auth::check())
+                    <li class=""><a class="btn btn-primary  " href="/login">صفحتي الشخصية</a></li>
+                @else
+                    <li class=""><a class="btn btn-primary  " href="/login">الدخول</a></li>
+                    <li class="enroll-btn"><a class="btn btn-success   " href="/register">انضم</a></li>
+                @endif
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
@@ -78,7 +82,11 @@
                 <h1>منصة الكتابة الاولى في تونس</h1>
                 <p>انضم إلى آلاف عشاق الكتابة والقرائة في تونس و شارك في عديد الانشطة و المساباقات الثقافية</p>
                 <div>
-                    <a href="/register" target="_blank" class="btn btn-orange btn-lg">انضم الآن</a>
+                    @if (Auth::check())
+                        <a href="/new-story"  class="btn btn-orange btn-lg  animated bounce">ابدأ الكتابة</a>
+                    @else
+                        <a href="/register"  class="btn btn-orange btn-lg  animated bounce">انضم الآن</a>
+                    @endif
                 </div>
             </div>
         </div>

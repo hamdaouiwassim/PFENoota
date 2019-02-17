@@ -15,7 +15,7 @@ class CreateBookmarksTable extends Migration
     {
         Schema::create('bookmarks', function (Blueprint $table) {
             $table->increments('Id');
-            $tble->integer('Iduser');
+            $table->integer('Iduser');
             $table->integer('Idpost');
             $table->timestamps();
         });
