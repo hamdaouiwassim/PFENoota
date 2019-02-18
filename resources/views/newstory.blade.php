@@ -16,7 +16,7 @@
 
 @section('content')
     <script src="/js/tinymce/tinymce.min.js"></script>
-    <?= $saved;?>
+
     <form dir="rtl" method="post" action="/new-story">
         @csrf
         <labem for="title">عنوان الكتابة</labem>
@@ -28,9 +28,10 @@
         tinymce.init({
             selector:'textarea',
             height: 400,
-            plugins: 'fullscreen image link media template  lists  wordcount a11ychecker imagetools textpattern help',
-            toolbar: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
+            plugins: ' image link lists  wordcount  imagetools textpattern directionality ',
+            toolbar: 'formatselect | ltr rtl bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
             image_advtab: true,
+            directionality :"rtl",
             language: 'ar_TN',
             setup: function (e) {
                 e.on('change', function () {

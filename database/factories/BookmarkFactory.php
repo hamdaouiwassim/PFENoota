@@ -2,7 +2,7 @@
 
 use Faker\Generator as Faker;
 
-$factory->define(App\Comment::class, function (Faker $faker) {
+$factory->define(App\Bookmark::class, function (Faker $faker) {
     return [
         //
     ];

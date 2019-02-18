@@ -11,6 +11,16 @@
 |
 */
 
+/**
+ * auth routes
+ */
+
+Auth::routes();
+
+/**
+ * outer
+ */
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -20,9 +30,13 @@ Route::get('/aboutus', function () {
 Route::get('/contact', function () {
         return view('Contact');
 });
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+/**
+ * user
+ */
+
+Route::get('/home', 'HomeController@index')->name('home')->middleware("auth");
+
 Route::get('/new-story', 'HomeController@new_story')->name('new-story');
 Route::post('/new-story', 'HomeController@add_new_story')->name('add-new-story');
 Route::get('/journal', 'HomeController@journal')->name('journal');
@@ -32,5 +46,11 @@ Route::get('/changepassword', 'HomeController@index')->name('changepassword');
 Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest');
 Route::get('/statistics', 'HomeController@statistics')->name('statistics');
 
+/**
+ * errors
+ */
+
 Route::get('404', ['as' => '404', 'uses' => 'ErrorController@notfound']);
 Route::get('500', ['as' => '500', 'uses' => 'ErrorController@fatal']);
+Route::get('419', ['as' => '419', 'uses' => 'ErrorController@slowdown']);
+

@@ -30,6 +30,7 @@
     .gradient {
         filter: none;
     }
+
 </style>
 <![endif]-->
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" title="">
@@ -53,10 +54,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand fadeImg" href="/" style="position: relative;">
-                <img src="/images/logo-1.png" alt="" style="position: absolute; width: 252px; height: 42px; display: none;">
-                <img style="position: absolute; width: 252px; height: 42px; display: block; opacity: 0.704325;" src="/images/logo-2.png" alt="">
-                <img style="position: absolute; width: 252px; height: 42px; display: block; opacity: 0.295675;" src="/images/logo-3.png" alt="">
+            <a class="navbar-brand " href="/" style="position: relative;">
+                <div style="font-size: 4rem;color: darkgrey; text-shadow: -2px 2px beige;font-family: '';">نوته</div>
             </a>
         </div>
         <div class="navbar-collapse collapse">

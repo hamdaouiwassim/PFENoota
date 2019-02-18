@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Comment;
+use App\Follow;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class FollowController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Follow  $follow
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Follow $follow)
     {
         //
     }
@@ -52,10 +52,10 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Follow  $follow
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Follow $follow)
     {
         //
     }
@@ -64,10 +64,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Comment  $comment
+     * @param  \App\Follow  $follow
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Follow $follow)
     {
         //
     }
@@ -75,10 +75,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Comment  $comment
+     * @param  \App\Follow  $follow
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Follow $follow)
     {
         //
     }

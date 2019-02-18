@@ -15,4 +15,8 @@ class ErrorController extends Controller
     {
         return view('500');
     }
+    public function wait()
+    {
+        return view('419');
+    }
 }
