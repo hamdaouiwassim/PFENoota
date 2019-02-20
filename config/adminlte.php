@@ -110,18 +110,18 @@ return [
     'menu' => [
         'الاساسيات',
         [
-            'text' => 'اكتب',
-            'url'  => '/new-story',
-            'icon'  => 'plus-square-o',
-            'icon_color'=>'blue',
-        ],
-        [
             'text' => 'صفحتي',
             'url'  => '/journal',
             'icon' => 'files-o',
             'icon_color'=>'blue',
         ],
-        'حسابي لاشخصي',
+        [
+            'text' => 'اكتب',
+            'url'  => '/new-story',
+            'icon'  => 'plus-square-o',
+            'icon_color'=>'blue',
+        ],
+        'حسابي الشخصي',
         [
             'text'        => 'معلوماتي الشخصية',
             'url'         => '/home',

@@ -31,7 +31,7 @@ class HomeController extends Controller
     }
     public function journal()
     {
-        return view('home');
+        return view('journal');
     }
     public function favourite_writers()
     {
