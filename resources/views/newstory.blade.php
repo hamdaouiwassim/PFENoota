@@ -75,7 +75,10 @@
 @section('content')
     <h1>كتابة جديدة</h1>
     <script src="/js/tinymce/tinymce.min.js"></script>
+    <script src="/js/alertifyjs/alertify.js"></script>
     <script src="/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="/js/alertifyjs/css/alertify.rtl.css">
+    <link rel="stylesheet" href="/js/alertifyjs/css/theme/bootstrap.rtl.css">
 
     <form id="formpublish" dir="rtl" method="post" action="/new-story">
         @csrf
@@ -87,7 +90,7 @@
         <span class="help-block">   </span>
         <labem for="title">كلمات دلالية</labem>
         <input type="text" id="keywords" name="keywords" class="form-control">
-        <input type="checkbox" id="publish" name="publish" class="">
+        <input type="checkbox" id="publish" name="publish" class="hidden">
 
 
         <span class="help-block">   </span>
@@ -112,17 +115,29 @@
             }
         });
 
+        alertify.set('notifier','position', 'bottom-right');
         $('#formpublish').on('submit',function (e){
             e.preventDefault();
-            console.log($(this).serialize());
+            $.ajax({
+                type: "post",
+                url: $(location).attr('href'),
+                data:$(this).serialize(),
+                error: function(returnval) {
+                    console.log(returnval);
+                    alertify.success( returnval.status+" " + ': لقد حصلت مشكلة ');
+                },
+                success: function (returnval) {
+                    alertify.success('لقد تم النشر بنجاح');
+                }
+            });
             $.post($(location).attr('href'), $(this).serialize(), function(data){ });
         });
         $('#btnpublish').on("click",function (e){
-            $('publish').prop('checked', true);
+            $('#publish').prop('checked', true);
 
         });
         $('#btndraft').on("click",function (e){
-            $('publish').prop('checked', false);
+            $('#publish').prop('checked', false);
         });
 
     </script>
