@@ -75,13 +75,26 @@
 @section('content')
     <h1>كتابة جديدة</h1>
     <script src="/js/tinymce/tinymce.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
 
-    <form dir="rtl" method="post" action="/new-story">
+    <form id="formpublish" dir="rtl" method="post" action="/new-story">
         @csrf
         <labem for="title">عنوان الكتابة</labem>
         <input type="text" id="title" name="title" class="form-control">
+        <span class="help-block">   </span>
+        <labem for="title">وصف</labem>
+        <input type="text" id="description" name="description" class="form-control">
+        <span class="help-block">   </span>
+        <labem for="title">كلمات دلالية</labem>
+        <input type="text" id="keywords" name="keywords" class="form-control">
+        <input type="checkbox" id="publish" name="publish" class="">
+
+
+        <span class="help-block">   </span>
         <labem for="title">المحتوى</labem> <textarea id="story-content" name="storycontent"></textarea>
-        <button type="submit" class="btn btn-primary float-left">انشر الكتابة</button>
+        <span class="help-block">   </span>
+        <button id="btnpublish" class="btn btn-primary">انشر الكتابة</button><span class="text-blue fa-2x"> أو </span>
+        <button  id="btndraft" class="btn btn-success"> سجل الكتابة</button>
     </form>
     <script>
         tinymce.init({
@@ -98,6 +111,20 @@
                 });
             }
         });
+
+        $('#formpublish').on('submit',function (e){
+            e.preventDefault();
+            console.log($(this).serialize());
+            $.post($(location).attr('href'), $(this).serialize(), function(data){ });
+        });
+        $('#btnpublish').on("click",function (e){
+            $('publish').prop('checked', true);
+
+        });
+        $('#btndraft').on("click",function (e){
+            $('publish').prop('checked', false);
+        });
+
     </script>
     <style>
         .tox .tox-toolbar,.tox .tox-menubar{
