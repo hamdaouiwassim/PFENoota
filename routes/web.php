@@ -18,7 +18,7 @@
 Auth::routes();
 
 /**
- * outer
+ * Landing
  */
 
 Route::get('/', function () {
@@ -32,19 +32,21 @@ Route::get('/contact', function () {
 });
 
 /**
- * user
+ * User
  */
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware("auth");
-
-Route::get('/new-story', 'HomeController@new_story')->name('new-story');
-Route::post('/new-story', 'HomeController@add_new_story')->name('add-new-story');
-Route::get('/journal', 'HomeController@journal')->name('journal');
-Route::get('/favourit-writers', 'HomeController@favourite_writers')->name('favourite-writers');
-Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers');
-Route::get('/changepassword', 'HomeController@index')->name('changepassword');
-Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest');
-Route::get('/statistics', 'HomeController@statistics')->name('statistics');
+/**
+ * User Story
+ */
+Route::get('/new-story', 'PostsController@index')->name('new-story')->middleware("auth");;
+Route::post('/new-story', 'PostsController@store')->name('add-new-story')->middleware("auth");;
+Route::get('/journal', 'PostsController@journal')->name('journal')->middleware("auth");;
+Route::get('/favourit-writers', 'HomeController@favourite_writers')->name('favourite-writers')->middleware("auth");;
+Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers')->middleware("auth");;
+Route::get('/changepassword', 'HomeController@index')->name('changepassword')->middleware("auth");;
+Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest')->middleware("auth");;
+Route::get('/statistics', 'HomeController@statistics')->name('statistics')->middleware("auth");;
 
 /**
  * errors

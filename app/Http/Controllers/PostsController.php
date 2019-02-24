@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use Illuminate\Http\Request;
-
+use DB;
+use Auth;
 class PostsController extends Controller
 {
     /**
@@ -13,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+        return view('newstory');
     }
 
     /**
@@ -34,7 +36,18 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post([
+            "Iduser"=> $request->user()->id,
+            "Title"=> $request->input("title"),
+            "Content"=> $request->input("storycontent"),
+            "Description"=> $request->input("description"),
+            "Keywords"=> $request->input("keywords"),
+            "Lang"=> "ar",
+            "State"=> "publish",
+        ]);
+        $post->save();
+
+        return view('newstory');
     }
 
     /**
@@ -80,5 +93,12 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function journal()
+    {
+        $posts = DB::table('posts')->where('Iduser', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(15);
+
+        return view('Journal', compact("posts",$posts));
     }
 }

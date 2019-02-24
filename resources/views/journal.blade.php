@@ -64,6 +64,9 @@
 @stop
 
 @section('content')
+
+    @foreach ($posts as $post)
+
     <div class="tab-pane active well" id="activity">
         <!-- Post -->
         <div class="post ">
@@ -72,20 +75,17 @@
                 {{--<img class="col-xs-3 img-circle img-bordered-sm" src="" alt="user image">--}}
                 <i class="fa fa-user-circle fa-4x "></i>
                 <span class="col-9username" style="margin-right: 15px;">
-                          <a href="#">فلان بن فلان الفلاني</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                          <a href="#">{{\App\User::findOrFail($post->Iduser )->name}}</a>
                         </span>
                 <br/>
                 <br/>
-                <span class="description">اليوم مع الساعة ....</span>
+                <span class="description">نشر {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans()  }}</span>
             </div>
 
             <!-- /.user-block -->
-            <p>
-                لكل قد الأحمر اليابان،, تونس تُصب ذلك مع. وتنامت المشترك إيو ٣٠. عن حدى كرسي تكبّد الأوضاع, جدول واعتلاء بال إذ, أي وقد أمام الإمتعاض. فكانت والنفيس لبلجيكا، في ذلك, أملاً وزارة ثم قام. ما وفي قادة لليابان ولكسمبورغ, عل بحث وشعار والقرى التّحول, ثم يتم احداث العالمي. ذات ثمّة قامت المجتمع مع, وبدأت ليتسنّى هو على.
-
-                الا عن تصفح الشمل إستيلاء, التي وبداية الاندونيسية هو غير. بأيدي بالرغم وإيطالي أخر قد. عرض جيوب لمحاكم بل, هذا حاول وحتى ثم, الموسوعة المتساقطة، تم الا. بل ذات ضمنها الربيع، والمانيا, أما الدول الطريق هو. أما بل مارد وحتى. إذ بحق بخطوط الستار, عدم لهذه غريمه وفرنسا أي, ويعزى بأضرار واندونيسيا، مدن أي.
-            </p>
+            <div>
+                {!! $post->Content  !!}
+            </div>
             <ul class="list-inline">
                 <li><a href="#" class="link-black text-sm text-yellow"><i class="fa fa-star-half-empty margin-r-5 text-yellow"></i> قيم</a>
                 </li>
@@ -98,38 +98,7 @@
         <!-- /.post -->
 
     </div>
-    <div class="tab-pane active well" id="activity">
-        <!-- Post -->
-        <div class="post ">
-            <div class="user-block rtl row">
 
-                {{--<img class="col-xs-3 img-circle img-bordered-sm" src="" alt="user image">--}}
-                <i class="fa fa-user-circle fa-4x "></i>
-                <span class="col-9username" style="margin-right: 15px;">
-                          <a href="#">فلان بن فلان الفلتاني</a>
-                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
-                        </span>
-                <br/>
-                <br/>
-                <span class="description">اليوم مع الساعة ....</span>
-            </div>
-
-            <!-- /.user-block -->
-            <p>
-                لكل قد الأحمر اليابان،, تونس تُصب ذلك مع. وتنامت المشترك إيو ٣٠. عن حدى كرسي تكبّد الأوضاع, جدول واعتلاء بال إذ, أي وقد أمام الإمتعاض. فكانت والنفيس لبلجيكا، في ذلك, أملاً وزارة ثم قام. ما وفي قادة لليابان ولكسمبورغ, عل بحث وشعار والقرى التّحول, ثم يتم احداث العالمي. ذات ثمّة قامت المجتمع مع, وبدأت ليتسنّى هو على.
-
-                الا عن تصفح الشمل إستيلاء, التي وبداية الاندونيسية هو غير. بأيدي بالرغم وإيطالي أخر قد. عرض جيوب لمحاكم بل, هذا حاول وحتى ثم, الموسوعة المتساقطة، تم الا. بل ذات ضمنها الربيع، والمانيا, أما الدول الطريق هو. أما بل مارد وحتى. إذ بحق بخطوط الستار, عدم لهذه غريمه وفرنسا أي, ويعزى بأضرار واندونيسيا، مدن أي.
-            </p>
-            <ul class="list-inline">
-                <li><a href="#" class="link-black text-sm text-yellow"><i class="fa fa-star-half-empty margin-r-5 text-yellow"></i> قيم</a>
-                </li>
-                <li class="pull-right">
-                    <a href="#" class="link-black text-sm text-blue"><i class="fa fa-comments-o margin-r-5 text-blue"></i> تعليق</a></li>
-            </ul>
-
-            <input class="form-control input-sm" type="text" placeholder="Type a comment">
-        </div>
-        <!-- /.post -->
-
-    </div>
+    @endforeach
+    {!! $posts->render() !!}
 @stop

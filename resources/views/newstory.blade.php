@@ -117,7 +117,7 @@
 
         alertify.set('notifier','position', 'bottom-right');
         $('#formpublish').on('submit',function (e){
-            e.preventDefault();
+            /*e.preventDefault();
             $.ajax({
                 type: "post",
                 url: $(location).attr('href'),
@@ -129,8 +129,7 @@
                 success: function (returnval) {
                     alertify.success('لقد تم النشر بنجاح');
                 }
-            });
-            $.post($(location).attr('href'), $(this).serialize(), function(data){ });
+            });*/
         });
         $('#btnpublish').on("click",function (e){
             $('#publish').prop('checked', true);

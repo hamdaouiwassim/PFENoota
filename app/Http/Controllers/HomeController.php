@@ -25,14 +25,6 @@ class HomeController extends Controller
     {
         return view('home');
     }
-    public function new_story()
-    {
-        return view('newstory');
-    }
-    public function journal()
-    {
-        return view('journal');
-    }
     public function favourite_writers()
     {
         return view('home');
