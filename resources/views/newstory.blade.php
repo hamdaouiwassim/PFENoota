@@ -117,7 +117,7 @@
 
         alertify.set('notifier','position', 'bottom-right');
         $('#formpublish').on('submit',function (e){
-            /*e.preventDefault();
+            e.preventDefault();
             $.ajax({
                 type: "post",
                 url: $(location).attr('href'),
@@ -127,13 +127,13 @@
                     alertify.success( returnval.status+" " + ': لقد حصلت مشكلة ');
                 },
                 success: function (returnval) {
-                    alertify.success('لقد تم النشر بنجاح');
+                    alertify.success('لقد تم الأمر بنجاح');
+                    $('#formpublish')[0].reset();
                 }
-            });*/
+            });
         });
         $('#btnpublish').on("click",function (e){
             $('#publish').prop('checked', true);
-
         });
         $('#btndraft').on("click",function (e){
             $('#publish').prop('checked', false);

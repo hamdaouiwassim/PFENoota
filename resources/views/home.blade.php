@@ -64,6 +64,7 @@
 @stop
 
 @section('content')
+
     <style>
         .list-group-unbordered>.list-group-item{
             padding-right: 25px !important;
@@ -78,9 +79,9 @@
     <div class="box-body box-profile">
         <img class="profile-user-img img-responsive img-circle" src="/user.png" alt="User profile picture">
 
-        <h3 class="profile-username text-center">مستعمل</h3>
+        <h3 class="profile-username text-center">{{Auth::user()->name }}</h3>
 
-        <p class="text-muted text-center">باحث في علوم الحب و الغرام</p>
+        <p class="text-muted text-center">مسجل {{   \Carbon\Carbon::parse(Auth::user()->created_at)->diffForHumans()}} </p>
         <div class="row">
             <div class="col-md-8">
 <p class="description well" style="direction: rtl">
@@ -150,4 +151,5 @@
         </div>
         <!-- /.box-body -->
     </div>
+
 @stop
