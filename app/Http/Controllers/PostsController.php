@@ -99,6 +99,13 @@ class PostsController extends Controller
     {
         $posts = DB::table('posts')->where('Iduser', Auth::user()->id)->orderBy('updated_at', 'desc')->paginate(15);
 
-        return view('Journal', compact("posts",$posts));
+        return view('journal', compact("posts",$posts));
+    }
+
+    public function outer()
+    {
+        $posts = DB::table('posts')->orderBy('updated_at', 'desc')->paginate(7);
+
+        return view('recentposts', compact("posts",$posts));
     }
 }

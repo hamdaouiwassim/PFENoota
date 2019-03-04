@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="description" content="تاريخ وا حد مليون العرب في رحلتهم لتصبح مطوري البرمجيات المهنية. إتقان الحرفية على منصة مجانية على الانترنت مع دورات استثنائية.">
-<meta name="csrf-token" content="1532788924##67056c72221c402419d4428e85c14244cf82d24d">
+
 <meta name="title" content="تعلم كيفية بناء البرمجيات وتشكيل المستقبل الخاص بك و مليون مبرمج عربي">
 <title>منصة هواة الكتاب التونسيين</title>
 <!-- Bootstrap Core CSS -->
@@ -46,7 +46,7 @@
 </head>
 <body class="rtl" style="">
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" style="box-shadow: 7px 2px 10px grey">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -62,6 +62,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ><a href="/contact">اتصل بنا</a></li>
                 <li ><a href="/aboutus">عن نوته</a></li>
+                <li ><a href="/recent">ابدأ التصفح</a></li>
                 @if (Auth::check())
                     <li class=""><a class="btn btn-primary  " href="/login">صفحتي الشخصية</a></li>
                 @else

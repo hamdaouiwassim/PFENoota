@@ -30,7 +30,12 @@ Route::get('/aboutus', function () {
 Route::get('/contact', function () {
         return view('Contact');
 });
+/**
+ * outer public stories
+ */
 
+
+    Route::get('/recent', 'PostsController@outer')->name('recentpost');
 /**
  * User
  */

@@ -5,8 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<meta name="description" content="تاريخ وا حد مليون العرب في رحلتهم لتصبح مطوري البرمجيات المهنية. إتقان الحرفية على منصة مجانية على الانترنت مع دورات استثنائية.">
-
+<meta name="description" content="">
 <meta name="title" content="تعلم كيفية بناء البرمجيات وتشكيل المستقبل الخاص بك و مليون مبرمج عربي">
 <title>منصة هواة الكتاب التونسيين</title>
 <!-- Bootstrap Core CSS -->
@@ -73,33 +72,53 @@
         </div><!--/.navbar-collapse -->
     </div>
 </div>
-
-<!-- Main Banner  -->
-<section class="main-banner">
-    <div class="container">
-        <div class="banner-caption">
-            <div class="col-md-7 col-sm-10 col-xs-12">
-                <h1>منصة الكتابة الاولى في تونس</h1>
-                <p>انضم إلى آلاف عشاق الكتابة والقرائة في تونس و شارك في عديد الانشطة و المساباقات الثقافية</p>
-                <div>
-                    @if (Auth::check())
-                        <a href="/new-story"  class="btn btn-orange btn-lg  animated bounce">ابدأ الكتابة</a>
-                    @else
-                        <a href="/register"  class="btn btn-orange btn-lg  animated bounce">انضم الآن</a>
-                    @endif
-                </div>
-            </div>
-        </div>
-        <!-- SCROLL DOWN VISUAL CUE -->
-        <div class="scroll-down-cue">
-            <a>
-                <img class="animated infinite bounce" src="/images/down.png" alt="Learn More">
-            </a>
-        </div>
-        <!-- /SCROLL DOWN VISUAL CUE -->
+<div class="container">
+    <div class="section-title">
+        <h2>آخر المنشورات</h2>
     </div>
-</section>
+</div>
+<div class="container">
+    @foreach ($posts as $post)
 
+        <div class="tab-pane active well" id="activity">
+            <!-- Post -->
+            <div class="post ">
+                <div class="user-block rtl row">
+
+                    {{--<img class="col-xs-3 img-circle img-bordered-sm" src="" alt="user image">--}}
+                    <i class="fa fa-user-circle fa-4x "></i>
+                    <span class="col-9username" style="margin-right: 15px;">
+                          <a href="#">{{\App\User::findOrFail($post->Iduser )->name}}</a>
+                        </span>
+                    <br/>
+                    <br/>
+                    <span class="description">نشر {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans()  }}</span>
+                </div>
+
+                <!-- /.user-block -->
+                <div>
+                    {!! $post->Content  !!}
+                </div>
+                <ul class="list-inline">
+                    <li><a href="#" class="link-black text-sm text-yellow"><i class="fa fa-star-half-empty margin-r-5 text-yellow"></i> قيم</a>
+                    </li>
+                    <li class="pull-right">
+                        <a href="#" class="link-black text-sm text-blue"><i class="fa fa-comments-o margin-r-5 text-blue"></i> تعليق</a></li>
+                </ul>
+                <form method="post" class="commentform">
+                    @csrf
+                    <input name="commentid" type="hidden" value="{{$post->Id}}">
+                    <input name="commentvalue" class="form-control input-sm" type="text" placeholder="Type a comment">
+                </form>
+            </div>
+            <!-- /.post -->
+
+        </div>
+
+    @endforeach
+    {!! $posts->render() !!}
+
+</div>
 <footer>
     <div class="container">
         <div class="clearfix">
@@ -134,8 +153,13 @@
         </div>
     </div>
 </footer>
-
 <script src="/js/jquery.min.js"></script>
+<script>
+    $(".commentform").on("submit",function (e) {
+        e.preventDefault();
+        console.log(e.target.commentid.value,e.target.commentvalue.value);
+    })
+</script>
 <script src="/js/bootstrap.min.js"></script>
 <script type="text/javascript">
     $next = 1;			// fixed, please do not modfy;

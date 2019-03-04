@@ -6,7 +6,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="description" content="تاريخ وا حد مليون العرب في رحلتهم لتصبح مطوري البرمجيات المهنية. إتقان الحرفية على منصة مجانية على الانترنت مع دورات استثنائية.">
-<meta name="csrf-token" content="1532788924##67056c72221c402419d4428e85c14244cf82d24d">
+
 <meta name="title" content="تعلم كيفية بناء البرمجيات وتشكيل المستقبل الخاص بك و مليون مبرمج عربي">
 <title>منصة هواة الكتاب التونسيين</title>
 <!-- Bootstrap Core CSS -->
@@ -30,6 +30,7 @@
     .gradient {
         filter: none;
     }
+
 </style>
 <![endif]-->
 <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.png" title="">
@@ -45,7 +46,7 @@
 </head>
 <body class="rtl" style="">
 
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" style="box-shadow: 7px 2px 10px grey">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -53,18 +54,21 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand fadeImg" href="/" style="position: relative;">
-                <img src="/images/logo-1.png" alt="" style="position: absolute; width: 252px; height: 42px; display: none;">
-                <img style="position: absolute; width: 252px; height: 42px; display: block; opacity: 0.704325;" src="/images/logo-2.png" alt="">
-                <img style="position: absolute; width: 252px; height: 42px; display: block; opacity: 0.295675;" src="/images/logo-3.png" alt="">
+            <a class="navbar-brand " href="/" style="position: relative;">
+                <div style="font-size: 4rem;color: darkgrey; text-shadow: -2px 2px beige;font-family: '';">نوته</div>
             </a>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-            <li class=""><a class="btn btn-primary" href="/login">الدخول</a></li>
-                <li class=""><a class="btn btn-success" href="/register">انضم</a></li>
-                <li class="enroll-btn"><a href="/contact">اتصل بنا</a></li>
-                <li class="enroll-btn"><a href="/aboutus">عن نوته</a></li>
+                <li ><a href="/contact">اتصل بنا</a></li>
+                <li ><a href="/aboutus">عن نوته</a></li>
+                <li ><a href="/recent">ابدأ التصفح</a></li>
+                @if (Auth::check())
+                    <li class=""><a class="btn btn-primary  " href="/login">صفحتي الشخصية</a></li>
+                @else
+                    <li class=""><a class="btn btn-primary  " href="/login">الدخول</a></li>
+                    <li class="enroll-btn"><a class="btn btn-success   " href="/register">انضم</a></li>
+                @endif
             </ul>
         </div><!--/.navbar-collapse -->
     </div>
@@ -73,10 +77,29 @@
 <!-- Main Banner  -->
 <section class="main-banner">
     <div class="container">
-       
+        <div class="banner-caption">
+            <div class="col-md-7 col-sm-10 col-xs-12">
+                <h1>منصة الكتابة الاولى في تونس</h1>
+                <p>انضم إلى آلاف عشاق الكتابة والقرائة في تونس و شارك في عديد الانشطة و المساباقات الثقافية</p>
+                <div>
+                    @if (Auth::check())
+                        <a href="/new-story"  class="btn btn-orange btn-lg  animated bounce">ابدأ الكتابة</a>
+                    @else
+                        <a href="/register"  class="btn btn-orange btn-lg  animated bounce">انضم الآن</a>
+                    @endif
+                </div>
+            </div>
+        </div>
+        <!-- SCROLL DOWN VISUAL CUE -->
+        <div class="scroll-down-cue">
+            <a>
+                <img class="animated infinite bounce" src="/images/down.png" alt="Learn More">
+            </a>
+        </div>
+        <!-- /SCROLL DOWN VISUAL CUE -->
     </div>
 </section>
-<!-- Footer Section -->
+
 <footer>
     <div class="container">
         <div class="clearfix">
