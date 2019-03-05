@@ -85,7 +85,7 @@
                         
                 </select>
                 <input type="text" name="searchwords" placeholder="العنوان أو الكلمات الدلالية" class="searchwords">
-                <input type="date" name="datepost"  placeholder="تاريخ النشر"
+                <input type="date" name="datepost"  placeholder="تاريخ النشر" 
   onClick="$(this).removeClass('placeholderclass')"
   class="dateclass placeholderclass" >
                 <input type="submit" value="تأكيد" name="valide" class="valide" >
