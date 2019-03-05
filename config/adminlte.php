@@ -110,8 +110,8 @@ return [
     'menu' => [
         'الاساسيات',
         [
-            'text' => 'صفحتي',
-            'url'  => '/journal',
+            'text' => 'كتاباتي',
+            'url'  => '/mywritings',
             'icon' => 'files-o',
             'icon_color'=>'blue',
         ],
