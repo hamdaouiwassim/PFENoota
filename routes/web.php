@@ -46,7 +46,7 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware("auth");
  */
 Route::get('/new-story', 'PostsController@index')->name('new-story')->middleware("auth");;
 Route::post('/new-story', 'PostsController@store')->name('add-new-story')->middleware("auth");;
-Route::get('/journal', 'PostsController@journal')->name('journal')->middleware("auth");;
+Route::get('/mywritings', 'PostsController@journal')->name('journal')->middleware("auth");;
 Route::get('/favourit-writers', 'HomeController@favourite_writers')->name('favourite-writers')->middleware("auth");;
 Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers')->middleware("auth");;
 Route::get('/changepassword', 'HomeController@index')->name('changepassword')->middleware("auth");;
