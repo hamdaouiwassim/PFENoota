@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Comment;
 use Illuminate\Http\Request;
-
 class CommentController extends Controller
 {
     /**
@@ -35,7 +34,13 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $comment = new Comment([
+            "Idpost"=>$request->postid,
+            "Iduser"=> $request->user()->id,
+            "Content"=> $request->commentvalue
+        ]);
+        $comment->save();
+        return response()->json([ 'result'=>'0' ,'token'=>csrf_token()]);
     }
 
     /**

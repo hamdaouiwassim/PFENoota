@@ -24,10 +24,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-
+/*
         $myid=Auth::user()->id;
 
-        $users = DB::table('posts')->where('id', $myid)->first();
+        $users = DB::table('posts')->where('id', $myid)->first();*/
         return view('home');
     }
     public function favourite_writers()

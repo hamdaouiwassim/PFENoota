@@ -105,9 +105,9 @@
                     <li class="pull-right">
                         <a href="#" class="link-black text-sm text-blue"><i class="fa fa-comments-o margin-r-5 text-blue"></i> تعليق</a></li>
                 </ul>
-                <form method="post" class="commentform">
+                <form method="post" class="commentform" target="/new-comment">
                     @csrf
-                    <input name="commentid" type="hidden" value="{{$post->Id}}">
+                    <input name="postid" type="hidden" value="{{$post->Id}}">
                     <input name="commentvalue" class="form-control input-sm" type="text" placeholder="Type a comment">
                 </form>
             </div>
@@ -157,7 +157,27 @@
 <script>
     $(".commentform").on("submit",function (e) {
         e.preventDefault();
-        console.log(e.target.commentid.value,e.target.commentvalue.value);
+        d={
+            "postid":e.target.postid.value,
+            "commentvalue":e.target.commentvalue.value,
+            "_token": e.target._token.value
+        };
+        $.ajax({
+            type: "post",
+            url: "/new-comment",
+            headers: {
+                'X-CSRF-TOKEN': e.target._token.value
+            },
+            data:d,
+            error: function(returnval) {
+                console.log(returnval);
+            },
+            success: function (returnval) {
+                console.log(returnval);
+                e.target.commentvalue.value="";
+                e.target._token.value=returnval.token;
+            }
+        });
     })
 </script>
 <script src="/js/bootstrap.min.js"></script>

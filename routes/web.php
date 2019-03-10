@@ -35,14 +35,14 @@ Route::get('/contact', function () {
  */
 
 
-    Route::get('/recent', 'PostsController@outer')->name('recentpost');
+Route::get('/recent', 'PostsController@outer')->name('recentpost');
 /**
  * User
  */
 
 Route::get('/home', 'HomeController@index')->name('home')->middleware("auth");
 /**
- * User Story
+ * POST
  */
 Route::get('/new-story', 'PostsController@index')->name('new-story')->middleware("auth");;
 Route::post('/new-story', 'PostsController@store')->name('add-new-story')->middleware("auth");;
@@ -52,6 +52,13 @@ Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers')->m
 Route::get('/changepassword', 'HomeController@index')->name('changepassword')->middleware("auth");;
 Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest')->middleware("auth");;
 Route::get('/statistics', 'HomeController@statistics')->name('statistics')->middleware("auth");;
+
+/**
+ * Comment
+ */
+
+Route::post('/new-comment', 'CommentController@store')->name('add-new-comment')->middleware("auth");;
+
 
 /**
  * errors
