@@ -76,18 +76,34 @@
             padding: 10px ;
         }
     </style>
-    <div class="box-body box-profile">
-        <img class="profile-user-img img-responsive img-circle" src="/user.png" alt="User profile picture">
 
+<form class="form" action="/user/changeinfo" method="post"  enctype='multipart/form-data'>
+                @csrf
+
+    <div class="box-body box-profile">
+        @if ($user->logo != NULL)
+        <img class="profile-user-img img-responsive img-circle" id="logodiv" src="/images/{{ $user->logo }}" alt="User profile picture">
+        @else
+        <img class="profile-user-img img-responsive img-circle" src="/user.png" id="logodiv" alt="User profile picture">
+        
+        @endif
+        <div class="divfile">
+        <div class="upload-btn-wrapper">
+            <button class="btnchange">Changer logo</button>
+            <input type="file" name="logo" id="logo"/>
+        </div>
+    </div>
         <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
         <p class="text-muted text-center">مسجل {{   \Carbon\Carbon::parse(Auth::user()->created_at)->diffForHumans()}} </p>
         <div class="row">
             <div class="col-md-8">
-            <form class="form">
 <p class="description well" style="direction: rtl">
+@if ($user->description != NULL )
 <textarea name="description" class="form-control formintro">{{ $user->description }}</textarea>
-
+@else
+<textarea name="description" class="form-control formintro" placeholder="أكتب مقدمة عنك هنا ..."></textarea>
+@endif
 </p>
             </div>
             <div class="col-md-4">
@@ -114,10 +130,14 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-        <strong><i class="fa fa-map-marker margin-r-5"></i> مكان السكن</strong>
+        <strong><i class="fa fa-map-marker margin-r-5"></i>العنوان</strong>
 
             <p class="text-muted">
-               <input type="text" value="{{ $user->adresse }}" class="form-control formadresse">
+                @if ($user->adresse != NULL)
+               <input type="text" name="adresse" value="{{ $user->adresse }}" class="form-control formadresse">
+                @else
+               <input type="text" name="adresse" placeholder="عنوانك ..." class="form-control formadresse">
+               @endif
             </p>
 
             <hr>
@@ -133,12 +153,24 @@
             <hr>
 
             <strong><i class="fa fa-file-text-o margin-r-5"></i>من انا؟</strong>
-
-            <textarea class="form-control formdescription">{{ $user->description }}</textarea>
+            @if ($user->adresse != NULL)
+            <textarea class="form-control formdescription" name="description">{{ $user->description }}</textarea>
+            @else
+            <textarea class="form-control formdescription" name="description" placeholder="أكتب وصف دقيق عنك هنا ..."></textarea>            
+            @endif
         </div>
         <input type="submit" value="حفظ التغييرات" class="btn btn-success margin bottomleft">
         </form>
         <!-- /.box-body -->
     </div>
-
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript">
+            $(document). ready(function(){
+                $('input[type="file"]').change(function(e){
+                    
+                    $('#logodiv').attr("src",$('#logo').val());
+                });
+            });
+        </script>
+    
 @stop

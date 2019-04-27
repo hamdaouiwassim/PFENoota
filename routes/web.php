@@ -50,7 +50,9 @@ Route::post('/new-story', 'PostsController@store')->name('add-new-story')->middl
 Route::get('/mywritings', 'PostsController@journal')->name('journal')->middleware("auth");
 Route::get('/favourit-writers', 'HomeController@favourite_writers')->name('favourite-writers')->middleware("auth");
 Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers')->middleware("auth");
-Route::get('/changepassword', 'HomeController@index')->name('changepassword')->middleware("auth");
+Route::get('/changepassword', 'UsersController@changepwview')->name('loadchangepassword')->middleware("auth");
+Route::get('/user/changepw', 'UsersController@changepw')->name('changeuserpassword')->middleware("auth");
+Route::post('/user/changeinfo', 'UsersController@changeinfo')->name('changeuserinfo')->middleware("auth");
 Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest')->middleware("auth");;
 Route::get('/statistics', 'HomeController@statistics')->name('statistics')->middleware("auth");
 

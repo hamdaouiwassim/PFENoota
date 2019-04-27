@@ -75,3 +75,42 @@
       left:10px;
       bottom:10px;
   }
+
+  /* Change Pw view */
+  .width60{
+    width: 60%;
+  }
+  .inputstyle{
+    margin-top:10px;
+    border-radius:8px;
+  }
+  .divfile{
+    padding-top:5px;
+    width:200px;
+    margin:0 auto;
+    text-align: center;
+  }
+  .upload-btn-wrapper {
+    
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btnchange {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
