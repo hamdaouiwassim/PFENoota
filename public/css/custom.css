@@ -52,3 +52,26 @@
     width: 0%;
     content: "";
   }
+
+
+  /* HOME PAGE */
+  .formintro{
+    background-color: #f5f5f5;
+    border:none;
+  }
+  .formdescription{
+   width:80%;
+    border:none;
+  }
+  .formadresse{
+    border:none;
+  }
+  .margin{
+      margin:20px;
+  }
+  .bottomleft{
+      
+      position:absolute;
+      left:10px;
+      bottom:10px;
+  }

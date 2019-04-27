@@ -65,18 +65,19 @@
 
 @section('content')
 
-    @foreach ($posts as $post)
+   
 
     <div class="tab-pane active well" id="activity">
         <!-- Post -->
         <div class="post ">
             <div>
-            <form action="" method="POST" class="postshowoptions">
+            <form action="/filter" method="post" class="postshowoptions">
+            @csrf
                 <select name="posttype" class="selectchoices">
                         <option value="0">
                         كلّ الكتابات
-                        </option value="1">
-                        <option>
+                        </option >
+                        <option value="1">
                        منشورة 
                         </option>
                         <option value="2">
@@ -91,6 +92,7 @@
                 <input type="submit" value="تأكيد" name="valide" class="valide" >
            </form>
             </div>
+            @foreach ($posts as $post)
             <div class="user-block rtl row" style="padding-right:15px;">
 
                 {{--<img class="col-xs-3 img-circle img-bordered-sm" src="" alt="user image">--}}
@@ -116,10 +118,11 @@
 
             <input class="form-control input-sm" type="text" placeholder="Type a comment">
         </div>
+        @endforeach
         <!-- /.post -->
 
     </div>
 
-    @endforeach
+  
     {!! $posts->render() !!}
 @stop

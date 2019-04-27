@@ -108,4 +108,14 @@ class PostsController extends Controller
 
         return view('recentposts', compact("posts",$posts));
     }
+    public function filter(Request $request){
+       $stat = $request->input('posttype');
+       if ( $stat == 1 ){
+        $posts = Post::where('state','publish')->where('iduser',Auth::user()->id)->get();
+       }else if ( $stat == 2 ){
+        $posts = Post::where('state','publish')->where('iduser',Auth::user()->id)->get();
+       }
+       return view('mywritings', compact("posts",$posts));
+
+    }
 }

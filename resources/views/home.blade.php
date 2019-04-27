@@ -79,15 +79,14 @@
     <div class="box-body box-profile">
         <img class="profile-user-img img-responsive img-circle" src="/user.png" alt="User profile picture">
 
-        <h3 class="profile-username text-center">{{Auth::user()->name }}</h3>
+        <h3 class="profile-username text-center">{{ $user->name }}</h3>
 
         <p class="text-muted text-center">مسجل {{   \Carbon\Carbon::parse(Auth::user()->created_at)->diffForHumans()}} </p>
         <div class="row">
             <div class="col-md-8">
+            <form class="form">
 <p class="description well" style="direction: rtl">
-    هو فشكّل البولندي مما, أمّا قُدُماً تلك مع, عدم ان لغزو بالرّغم. هو أمّا اعتداء بلديهما ومن, الباهضة وبلجيكا، الأوربيين قبل من. به، و النزاع ولكسمبورغ التغييرات, أم هامش النفط الأعمال نفس. نفس شمال أملاً النفط أم. أم مرمى العاصمة اقتصادية جهة, تمهيد نتيجة ألمانيا بعض ٣٠, جيوب تاريخ المؤلّفة أخذ ٣٠.
-
-    وحتّى إتفاقية الأوربيين أضف عن. كُلفة والنرويج المتّبعة فصل في. شيء لم أراضي والقرى الطريق, وقد ما والحزب الكونجرس, قد ويتّفق وإيطالي لها. ثم لكل والحزب باستخدام. تم وقد إبّان وباءت الخارجية, ذات تاريخ استطاعوا التقليدية و.
+<textarea name="description" class="form-control formintro">{{ $user->description }}</textarea>
 
 </p>
             </div>
@@ -95,20 +94,16 @@
                 <div class="row">
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
-                            <b>عدد المتابعين</b> <a class="">1,322</a>
+                            <b>عدد المتابعين</b> <a class="">{{ $nbrflws }}</a>
                         </li>
                         <li class="list-group-item">
-                            <b> عدد التقييمات</b> <a class="">543</a>
+                            <b> عدد التقييمات</b> <a class="">{{ $nbrcmts }}</a>
                         </li>
                         <li class="list-group-item">
-                            <b>عدد الكتابات</b> <a class="">13,287</a>
+                            <b>عدد الكتابات</b> <a class="">{{ $nbrpsts }}</a>
                         </li>
                     </ul>
-                    <div class="">
-                        <div class="col-md-4 col-md-offset-6">
-                            <a href="#" class="btn btn-primary btn-block "><b>تابعني</b></a>
-                        </div>
-                    </div>
+                    
                 </div>
         </div>
         </div>
@@ -119,36 +114,30 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-            <strong><i class="fa fa-book margin-r-5"></i> الدراسة</strong>
+        <strong><i class="fa fa-map-marker margin-r-5"></i> مكان السكن</strong>
 
             <p class="text-muted">
-                كلية العلوم الانسانية بسوسة
+               <input type="text" value="{{ $user->adresse }}" class="form-control formadresse">
             </p>
-
-            <hr>
-
-            <strong><i class="fa fa-map-marker margin-r-5"></i> مكان السكن</strong>
-
-            <p class="text-muted">المهدية</p>
 
             <hr>
 
             <strong><i class="fa fa-pencil margin-r-5"></i> ابرز المواهب</strong>
 
             <p>
-                <span class="label label-danger">الكتابات الروائية</span>
-                <span class="label label-success">الشعر</span>
-                <span class="label label-info">كتب عربية</span>
-                <span class="label label-warning">كتب فرنسة</span>
-                <span class="label label-primary">كتب تركية</span>
+            @foreach($talents as $talent)
+                <span class="label label-danger">{{ $talent }}</span>
+            @endforeach  
             </p>
 
             <hr>
 
             <strong><i class="fa fa-file-text-o margin-r-5"></i>من انا؟</strong>
 
-            <p>و حول لفرنسا وفنلندا, بـ الغالي الحدود جُل. هذا إعمار بتطويق والإتحاد مع, جُل أم هُزم أمدها الأوربيين. ما خطّة سكان الهادي على, كان والروسية الحيلولة ثم. بحق ساعة المواد المشتّتون مع, هذه كل علاقة العدّ حاملات.</p>
+            <textarea class="form-control formdescription">{{ $user->description }}</textarea>
         </div>
+        <input type="submit" value="حفظ التغييرات" class="btn btn-success margin bottomleft">
+        </form>
         <!-- /.box-body -->
     </div>
 
