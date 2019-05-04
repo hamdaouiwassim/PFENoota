@@ -89,7 +89,7 @@
         @endif
         <div class="divfile">
         <div class="upload-btn-wrapper">
-            <button class="btnchange">Changer logo</button>
+            <button class="btnchange">تغيير الشعار</button>
             <input type="file" name="logo" id="logo"/>
         </div>
     </div>
