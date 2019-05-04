@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use App\Post;
 use Illuminate\Http\Request;
 use DB;
@@ -117,5 +117,10 @@ class PostsController extends Controller
        }
        return view('mywritings', compact("posts",$posts));
 
+    }
+    public function recents(){
+        $posts = Post::all();
+        $users = User::all();
+        return view('posts.recents')->with("posts",$posts)->with("users",$users);
     }
 }

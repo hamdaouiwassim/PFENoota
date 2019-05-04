@@ -88,7 +88,7 @@
                     {{--<img class="col-xs-3 img-circle img-bordered-sm" src="" alt="user image">--}}
                     <i class="fa fa-user-circle fa-4x "></i>
                     <span class="col-9username" style="margin-right: 15px;">
-                          <a href="#">{{\App\User::findOrFail($post->Iduser )->name}}</a>
+                          <a href="/user/" > {{\App\User::findOrFail($post->Iduser )->name}}</a>
                         </span>
                     <br/>
                     <br/>

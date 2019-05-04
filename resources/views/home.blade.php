@@ -100,9 +100,9 @@
             <div class="col-md-8">
 <p class="description well" style="direction: rtl">
 @if ($user->description != NULL )
-<textarea name="description" class="form-control formintro">{{ $user->description }}</textarea>
+<textarea name="intro" class="form-control formintro">{{ $user->intro }}</textarea>
 @else
-<textarea name="description" class="form-control formintro" placeholder="أكتب مقدمة عنك هنا ..."></textarea>
+<textarea name="intro" class="form-control formintro" placeholder="أكتب مقدمة عنك هنا ..."></textarea>
 @endif
 </p>
             </div>

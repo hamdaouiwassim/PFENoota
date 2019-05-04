@@ -44,6 +44,9 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware("auth");
 /**
  * POST
  */
+Route::get('/recents','PostsController@recents')->name('recents');
+Route::get('/user/{id}', 'UsersController@ShowUser')->name('showuser');
+Route::get('/user/{id}/follow/valide', 'UsersController@FollowUser')->name('followuser');
 Route::post('/filter','PostsController@filter')->name('new-filter')->middleware("auth");
 Route::get('/new-story', 'PostsController@index')->name('new-story')->middleware("auth");
 Route::post('/new-story', 'PostsController@store')->name('add-new-story')->middleware("auth");
@@ -51,7 +54,7 @@ Route::get('/mywritings', 'PostsController@journal')->name('journal')->middlewar
 Route::get('/favourit-writers', 'HomeController@favourite_writers')->name('favourite-writers')->middleware("auth");
 Route::get('/top-writers', 'HomeController@top_writers')->name('top-writers')->middleware("auth");
 Route::get('/changepassword', 'UsersController@changepwview')->name('loadchangepassword')->middleware("auth");
-Route::get('/user/changepw', 'UsersController@changepw')->name('changeuserpassword')->middleware("auth");
+Route::post('/user/changepw', 'UsersController@changepw')->name('changeuserpassword')->middleware("auth");
 Route::post('/user/changeinfo', 'UsersController@changeinfo')->name('changeuserinfo')->middleware("auth");
 Route::get('/monthly-writing-contest', 'HomeController@monthly_writing_contest')->name('monthly-writing-contest')->middleware("auth");;
 Route::get('/statistics', 'HomeController@statistics')->name('statistics')->middleware("auth");

@@ -15,7 +15,19 @@
        .box-primary .box-body{
             padding: 10px ;
         }
-    </style>
+        
+        </style>
+        @isset($msg)
+        @if ($type == "success")
+         <div class="alert alert-success">
+         @else
+         <div class="alert alert-warning">
+         @endif
+            {{ $msg }}
+         </div>
+        @endisset
+    
+    
     <form  action='/user/changepw' method="post">
     @csrf
     <div class="box box-primary">
@@ -24,26 +36,24 @@
         </div>
         <!-- /.box-header -->
         <div class="box-body">
-        <strong><i class="fa fa-key margin-r-5"></i> كلمة السرّ القديمة</strong>
-
-            <p class="text-muted">
-               <input type="text" placeholder="************" class="form-control width60 inputstyle">
-            </p>
-
-            <hr>
+        
 
             <strong><i class="fa fa-key margin-r-5"></i> كلمة السرّ الجديدة</strong>
 
             <p class="text-muted">
-               <input type="text" placeholder="************" class="form-control width60 inputstyle">
+            
+               <input name="newpw" type="password" placeholder="************" class="form-control width60 inputstyle">
+               <label style="font-size:10px;margin-top:5px;">  * كلمة السرّ تتكون من 8 حروف على الأقل  </label>
             </p>
 
             <hr>
 
-            <strong><i class="fa fa-key margin-r-5"></i> تكرار كلمة المرور الجديدة</strong>
+            <strong><i class="fa fa-key margin-r-5"></i> تأكيد كلمة المرور الجديدة</strong>
 
             <p class="text-muted">
-               <input type="text" placeholder="************" class="form-control width60 inputstyle">
+            
+               <input name="rnewpw" type="password" placeholder="************" class="form-control width60 inputstyle">
+               <label style="font-size:10px;margin-top:5px;">  * كلمة السرّ تتكون من 8 حروف على الأقل</label>
             </p>
         </div>
         <input type="submit" value="حفظ التغييرات" class="btn btn-success margin bottomleft">

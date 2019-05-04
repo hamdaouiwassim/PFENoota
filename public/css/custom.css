@@ -114,3 +114,9 @@
     top: 0;
     opacity: 0;
   }
+
+  .userlogo{
+    border-radius:50%;
+    width:80px !important;
+    height:80px !important;
+  }
