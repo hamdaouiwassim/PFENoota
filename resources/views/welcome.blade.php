@@ -77,7 +77,7 @@
 <!-- Main Banner  -->
 <section class="main-banner">
     <div class="container">
-        <div class="banner-caption">
+        <div class="banner-caption" style="background-color:rgba(255, 255, 255, 0.6) !important;">
             <div class="col-md-7 col-sm-10 col-xs-12">
                 <h1>منصة الكتابة الاولى في تونس</h1>
                 <p>انضم إلى آلاف عشاق الكتابة والقرائة في تونس و شارك في عديد الانشطة و المساباقات الثقافية</p>
