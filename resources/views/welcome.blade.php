@@ -62,7 +62,7 @@
             <ul class="nav navbar-nav navbar-right">
                 <li ><a href="/contact">اتصل بنا</a></li>
                 <li ><a href="/aboutus">عن نوته</a></li>
-                <li ><a href="/recent">ابدأ التصفح</a></li>
+                <li ><a href="/recents">ابدأ التصفح</a></li>
                 @if (Auth::check())
                     <li class=""><a class="btn btn-primary  " href="/login">صفحتي الشخصية</a></li>
                 @else
