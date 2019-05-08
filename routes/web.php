@@ -34,7 +34,11 @@ Route::get('/contact', function () {
  * outer public stories
  */
 
-
+Route::group(['middleware'=>['auth','admin']] , function (){
+   Route::get('/admin',function(){
+       return view('admin.adminpanel');
+   });
+});
 Route::get('/recent', 'PostsController@outer')->name('recentpost');
 /**
  * User
