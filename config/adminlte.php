@@ -124,7 +124,7 @@ return [
         'حسابي الشخصي',
         [
             'text'        => 'معلوماتي الشخصية',
-            'url'         => '/home',
+            'url'         => '/profile',
             'icon'        => 'user',
             'icon_color'=>'green',
         ],
@@ -137,6 +137,21 @@ return [
             'text'    => 'تصفح',
             'icon'    => 'share',
             'submenu' => [
+                
+                [
+                    'text' => 'قائمة المنشورات',
+                    'url'  => '/recents',
+
+                    'icon_color'=>'blue',
+                ],
+                [
+                    'text' => 'المفضّلة',
+                    'url'  => '/posts/favoris',
+
+                    'icon_color'=>'blue',
+                ],
+                
+                
                 [
                     'text' => 'كتابي المفضلون',
                     'url'  => '/favourit-writers',

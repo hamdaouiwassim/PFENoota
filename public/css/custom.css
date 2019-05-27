@@ -5,7 +5,28 @@
     margin-bottom:10px;
 
 }
-
+.post{
+  padding-bottom: 20px !important;
+}
+.comments{
+  padding:10px;
+  margin-top:20px;
+  margin-bottom: 20px;
+}
+.singlecomment{
+  margin:0 5px;
+  border-radius: 10px;
+  padding:10px;
+  
+}
+.replaycomment{
+  margin-top:5px;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding:10px;
+  background-color:#34495e;
+  color:white;
+}
 .selectchoices{
     margin-left:5px;
     height:40px;
@@ -119,4 +140,22 @@
     border-radius:50%;
     width:80px !important;
     height:80px !important;
+  }
+
+  .writers{
+      width:100%;
+
+  }
+  .writer{
+      margin:5px;
+      float:right;
+      border-radius:10px;
+      padding:20px;
+      text-align: center;
+      width:24%;
+      background-color: #f5cd79;
+  }
+  .WriterName{
+      text-align: center;
+
   }

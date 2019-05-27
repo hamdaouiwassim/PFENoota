@@ -47,16 +47,16 @@
             </div>
         </div>
         <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
+            <div class="small-box bg-blue">
                 <div class="inner">
                     <h3>°</h3>
 
-                    <p>إكتب </p>
+                    <p>التعليقات</p>
                 </div>
                 <div class="icon">
                     <i class="fa ion-edit"></i>
                 </div>
-                <a href="/new-story" class="small-box-footer">إكتب <span>  </span><i class="fa fa-arrow-circle-left"></i></a>
+                <a href="/comments/manage" class="small-box-footer">تصفح التعليقات<span>  </span><i class="fa fa-arrow-circle-left"></i></a>
 
             </div>
         </div>

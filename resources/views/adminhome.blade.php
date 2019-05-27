@@ -1,5 +1,5 @@
 <?php
-@extends('adminlte::page')
+/*@extends('adminlte::page')
 
 @section('title', 'NOOTA')
 
@@ -10,3 +10,4 @@
 @section('content')
     <p></p>
 @stop
+*/

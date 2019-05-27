@@ -188,181 +188,114 @@
         <!-- Main content -->
         <section class="content">
 
-    <style>
-        .list-group-unbordered>.list-group-item{
-            padding-right: 25px !important;
-        }
-        .box-body{
-            padding: 10px 0px;
-        }
-       .box-primary .box-body{
-            padding: 10px ;
-        }
-    </style>
+
+            <style>
+                .list-group-unbordered>.list-group-item{
+                    padding-right: 25px !important;
+                }
+                .box-body{
+                    padding: 10px 0px;
+                }
+                .box-primary .box-body{
+                    padding: 10px ;
+                }
+            </style>
 
 
 
-    <div class="box-body box-profile">
-        @if ($user->logo != NULL)
-        <img class="profile-user-img img-responsive img-circle userlogo"  id="logodiv" src="/images/{{ $user->logo }}" alt="User profile picture">
-        @else
-        <img class="profile-user-img img-responsive img-circle userlogo" src="/user.png" id="logodiv" alt="User profile picture">
-        
-        @endif
-       
-        <h3 class="profile-username text-center">{{ $user->name }}</h3>
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    @if(Session::get('msg') != null )
+                        <div id="deletesuccess" class="alert alert-success">
+                            {{ Session::get('msg') }}
+                            يمكنك تصفح المفضلة  <a class="btn btn-primary" href="/posts/favoris"> من هنا </a>
+                        </div>
+                    @endif
+                        <div style="display:flex;">
+                            <h2 style="width:80%;"> <i class="fa fa-fw fa-files-o text-blue"></i> كتّابي المفضلون </h2>
 
-        <p class="text-muted text-center">مسجل {{   \Carbon\Carbon::parse(Auth::user()->created_at)->diffForHumans()}} </p>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="description well" style="direction: rtl">
-                        @if ($user->description != NULL )
-                            {{ $user->intro }}
-
+                        </div>
+                    <hr>
+                    @if (count($writers) == 0 )
+                        <p> أنت لم تقم بمتابعة أي شخص لحدّ اللحضة</p>
                         @endif
-                        <hr>
-                        <div class="box-body">
-                        
+                    <div class="writers">
+                        @foreach($writers as $writer)
 
-                        <p class="text-muted">
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>  </strong> : 
-                            @if ($user->adresse != NULL)
-                            {{ $user->adresse }}
-                        
-                            @endif
-                        </p>
-                        <hr>
+                            <div class="writer">
+                                <div >
+                                    @if ($writer->logo != "")
+                                        <img src="images/{{ $writer->logo }}" class="userlogo">
+                                    @else
+                                        <img src="images/default.jpeg" class="userlogo">
+                                    @endif
 
-                        
+                                </div>
+                                <div class="WriterName">
+                                    <a href="/user/{{ $writer->id }}" style="color:#2c3e50 !important;"><h3>{{ $writer->name  }}</h3></a>
+                                    <br>
 
-                        <p>
-                        <strong><i class="fa fa-pencil margin-r-5"></i> </strong> :
-                        @foreach($talents as $talent)
-                            <span class="label label-danger">{{ $talent }}</span>
-                        @endforeach  
-                        </p>
 
-                        <hr>
+                                    <a href="/user/{{ $writer->id }}/unflow" style="background-color: #d35400 !important;" class="btn btn-danger">إحذف المتابعة </a>
 
-                        
-                       
-                        <p><strong><i class="fa fa-file-text-o margin-r-5"></i>  </strong> : 
-                        @if ($user->description != NULL)
-                        {{ $user->description }}
-                        @endif
-                        </p>
-                        
-                        </div>
 
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                @if($followed == 0 )
-                        <div class="row" style="text-align:center;margin-bottom:20px;">
-                            <div class="col-md-4 col-md-offset-6">
-                                <a href="/user/{{ $user->id }}/follow/valide" class="btn btn-primary btn-block"><b>تابعني</b></a>
+
+                                </div>
+
                             </div>
-                        </div>
-                @else
-                        <div class="row" style="text-align:center;margin-bottom:20px;">
-                            <div class="col-md-4 col-md-offset-6">
-                                <a id="unflow" href="/user/{{ $user->id }}/unflow" class="btn btn-success btn-block"><b>أنت تتابعني</b></a>
-                            </div>
-                        </div>
-                @endif
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>عدد المتابعين</b> <a class="">{{ $nbrflws }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b> عدد التقييمات</b> <a class="">{{ $nbrcmts }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>عدد الكتابات</b> <a class="">{{ $nbrpsts }}</a>
-                        </li>
-                    </ul>
-                    
-                </div>
-        </div>
-        </div>
-    </div>
-    <div class="box box-primary">
-        <div class="box-header with-border">
-            <h2 >إقرأ لي </h2>
-            <hr>
-            <div class="posts">
-            @foreach($posts as $post)
-                <div class="post">
-                    <div class="title">
-                        <h4>{{ $post->Title }}</h4>
+                        @endforeach
                     </div>
-                    <div class="description">
-                    <p>{!! $post->Content  !!}</p>
-                    </div>
-                    <div class="details">
-                    <a href="#" class="btn btn-success" style="font-size:10px;"><i class="fa fa-comment margin-r-5"></i>  </a>
-                    <a href="#" class="btn btn-default" style="font-size:10px;"><i class="fa fa-comment margin-r-5"></i>  </a>
-                    <a href="#" class="btn btn-primary" style="font-size:10px;">شاهد المقال ...</a>
-                    </div>
-                    
-                </div>
-            @endforeach
-            </div>
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body">
-       
 
-          
-        </div>
-      
-        <!-- /.box-body -->
-    </div>
-    
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
-    <script type="text/javascript">
-            $(document). ready(function(){
-                $('input[type="file"]').change(function(e){
-                    
-                    $('#logodiv').attr("src",$('#logo').val());
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+
+
+
+                </div>
+
+                <!-- /.box-body -->
+            </div>
+            <!-- Model Signaler -->
+
+            <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+            <script type="text/javascript">
+                $(document). ready(function(){
+                    $('input[type="file"]').change(function(e){
+
+                        $('#logodiv').attr("src",$('#logo').val());
+                    });
                 });
-            });
+            </script>
 
 
-            // Unflow Action 
-            $('#unflow').mouseenter(function(){
-               
-                $('#unflow').text("إحذف المتابعة");  
-            });
-            $('#unflow').mouseleave(function(){
-              
-                $('#unflow').text("أنت تتابعني ");  
-            });
-        </script>
-    
-    </section>
-            <!-- /.content -->
-                    </div>
-        <!-- /.content-wrapper -->
-
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- ./wrapper -->
+    <!-- /.content-wrapper -->
+
+</div>
+<!-- ./wrapper -->
 
 <script src="/vendor/adminlte/vendor/jquery/dist/jquery.min.js"></script>
 <script src="/vendor/adminlte/vendor/jquery/dist/jquery.slimscroll.min.js"></script>
 <script src="/vendor/adminlte/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 
-    <!-- Select2 -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<!-- Select2 -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
 
-    <!-- DataTables with bootstrap 3 renderer -->
-    <script src="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
+<!-- DataTables with bootstrap 3 renderer -->
+<script src="//cdn.datatables.net/v/bs/dt-1.10.18/datatables.min.js"></script>
 
-    <!-- ChartJS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.bundle.min.js"></script>
 
-    <script src="/vendor/adminlte/dist/js/adminlte.min.js"></script>
-        
+<script src="/vendor/adminlte/dist/js/adminlte.min.js"></script>
+<script>
+    $(document).ready( function() {
+        $('#deletesuccess').delay(3000).fadeOut();
+    });
+</script>
+
 </body>
 </html>

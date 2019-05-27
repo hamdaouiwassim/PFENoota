@@ -202,111 +202,47 @@
 
 
 
-    <div class="box-body box-profile">
-        @if ($user->logo != NULL)
-        <img class="profile-user-img img-responsive img-circle userlogo"  id="logodiv" src="/images/{{ $user->logo }}" alt="User profile picture">
-        @else
-        <img class="profile-user-img img-responsive img-circle userlogo" src="/user.png" id="logodiv" alt="User profile picture">
-        
-        @endif
-       
-        <h3 class="profile-username text-center">{{ $user->name }}</h3>
-
-        <p class="text-muted text-center">مسجل {{   \Carbon\Carbon::parse(Auth::user()->created_at)->diffForHumans()}} </p>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="description well" style="direction: rtl">
-                        @if ($user->description != NULL )
-                            {{ $user->intro }}
-
-                        @endif
-                        <hr>
-                        <div class="box-body">
-                        
-
-                        <p class="text-muted">
-                        <strong><i class="fa fa-map-marker margin-r-5"></i>  </strong> : 
-                            @if ($user->adresse != NULL)
-                            {{ $user->adresse }}
-                        
-                            @endif
-                        </p>
-                        <hr>
-
-                        
-
-                        <p>
-                        <strong><i class="fa fa-pencil margin-r-5"></i> </strong> :
-                        @foreach($talents as $talent)
-                            <span class="label label-danger">{{ $talent }}</span>
-                        @endforeach  
-                        </p>
-
-                        <hr>
-
-                        
-                       
-                        <p><strong><i class="fa fa-file-text-o margin-r-5"></i>  </strong> : 
-                        @if ($user->description != NULL)
-                        {{ $user->description }}
-                        @endif
-                        </p>
-                        
-                        </div>
-
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="row">
-                @if($followed == 0 )
-                        <div class="row" style="text-align:center;margin-bottom:20px;">
-                            <div class="col-md-4 col-md-offset-6">
-                                <a href="/user/{{ $user->id }}/follow/valide" class="btn btn-primary btn-block"><b>تابعني</b></a>
-                            </div>
-                        </div>
-                @else
-                        <div class="row" style="text-align:center;margin-bottom:20px;">
-                            <div class="col-md-4 col-md-offset-6">
-                                <a id="unflow" href="/user/{{ $user->id }}/unflow" class="btn btn-success btn-block"><b>أنت تتابعني</b></a>
-                            </div>
-                        </div>
-                @endif
-                    <ul class="list-group list-group-unbordered">
-                        <li class="list-group-item">
-                            <b>عدد المتابعين</b> <a class="">{{ $nbrflws }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b> عدد التقييمات</b> <a class="">{{ $nbrcmts }}</a>
-                        </li>
-                        <li class="list-group-item">
-                            <b>عدد الكتابات</b> <a class="">{{ $nbrpsts }}</a>
-                        </li>
-                    </ul>
-                    
-                </div>
-        </div>
-        </div>
-    </div>
     <div class="box box-primary">
         <div class="box-header with-border">
-            <h2 >إقرأ لي </h2>
+            <h2 > <i class="fa fa-fw fa-star text-blue"></i> المفضلة  </h2>
             <hr>
-            <div class="posts">
+            <div class="posts rtl">
             @foreach($posts as $post)
-                <div class="post">
-                    <div class="title">
-                        <h4>{{ $post->Title }}</h4>
+              @foreach($users as $user )
+                @if ($user->id == $post->Iduser)
+                <div class="post col-md-12 well rtl" >
+                        <div class="user_details col-md-4 rtl " style="text-align:right">
+                            @if ($user->logo != "")               
+                            <img src="/images/{{ $user->logo }}" class="userlogo" >
+                            @else
+                            <img src="/images/default.jpeg" class="userlogo" >
+                            @endif
+                            <br/>
+                            <br/>
+                            <span class="col-9username" style="margin-right: 15px;">
+                                <a href="/user/{{ $user->id }}" > {{ $user->name }}</a>
+                                </span>
+                            <br/>
+                            <br/>
+                            <span class="description"> نشر {{ \Carbon\Carbon::parse($post->updated_at)->diffForHumans()  }}</span>
+                        </div>
+                    <div class="post_details col-md-8 rtl">    
+                            <div class="title">
+                                <h4>{{ $post->Title }}</h4>
+                            </div>
+                            <div class="description">
+                            <p>{!! $post->Content  !!}</p>
+                            </div>
+                            <div class="details">
+                            <a href="#" class="btn btn-primary" style="font-size:10px;"><i class="fa fa-comment margin-r-5"></i> {{ $comments[$post->Id] }} </a>
+                            <a href="#" class="btn btn-default" style="font-size:10px;"><i class="fa fa-heart margin-r-5" style="color:red;"></i> {{ $reactions[$post->Id] }} </a>
+                            
+                            <a href="/post/{{ $post->Id }}" class="btn btn-success" style="font-size:10px;">شاهد المقال </a>
+                            </div>
                     </div>
-                    <div class="description">
-                    <p>{!! $post->Content  !!}</p>
-                    </div>
-                    <div class="details">
-                    <a href="#" class="btn btn-success" style="font-size:10px;"><i class="fa fa-comment margin-r-5"></i>  </a>
-                    <a href="#" class="btn btn-default" style="font-size:10px;"><i class="fa fa-comment margin-r-5"></i>  </a>
-                    <a href="#" class="btn btn-primary" style="font-size:10px;">شاهد المقال ...</a>
-                    </div>
-                    
                 </div>
+                @endif
+                @endforeach
             @endforeach
             </div>
         </div>

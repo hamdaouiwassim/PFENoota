@@ -34,7 +34,7 @@ class HomeController extends Controller
         }
         
         $numbersPosts = Post::where('iduser',$user->id)->get()->count();
-        return view('home')->with('user',$user)
+        return view('user.currentuserprofile')->with('user',$user)
                                     ->with('talents',$talents)
                                     ->with('nbrpsts',$numbersPosts)
                                     ->with('nbrflws',$numberFlowers)

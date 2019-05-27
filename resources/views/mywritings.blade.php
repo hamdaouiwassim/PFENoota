@@ -47,19 +47,19 @@
         </div>
     </div>
     <div class="col-lg-3 col-xs-6">
-        <div class="small-box bg-blue">
-            <div class="inner">
-                <h3>°</h3>
+            <div class="small-box bg-blue">
+                <div class="inner">
+                    <h3>°</h3>
 
-                <p>اكتب الآن</p>
-            </div>
-            <div class="icon">
-               <i class="fa ion-edit"></i>
-            </div>
-            <a href="/new-story" class="small-box-footer">اكتب الآن<span>  </span><i class="fa fa-arrow-circle-left"></i></a>
+                    <p>إكتب </p>
+                </div>
+                <div class="icon">
+                    <i class="fa ion-edit"></i>
+                </div>
+                <a href="/new-story" class="small-box-footer">إكتب <span>  </span><i class="fa fa-arrow-circle-left"></i></a>
 
+            </div>
         </div>
-    </div>
     </div>
 @stop
 

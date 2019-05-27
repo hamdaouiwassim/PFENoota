@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Reply;
+use App\Comment;
+use App\Follower;
+use App\Post;
 use Illuminate\Http\Request;
-
-class ReplyController extends Controller
+use Auth;
+class CommentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -36,15 +37,22 @@ class ReplyController extends Controller
     public function store(Request $request)
     {
         //
+       $comment = new Comment();
+        $comment->Idpost = $request->input('postid');
+        $comment->Iduser = Auth::user()->id;
+        $comment->Content = $request->input('commentvalue');
+        $comment->save();
+        return redirect('/post/'.$request->postid);
+    
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Reply  $reply
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Reply $reply)
+    public function show($id)
     {
         //
     }
@@ -52,10 +60,10 @@ class ReplyController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Reply  $reply
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reply $reply)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +72,10 @@ class ReplyController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Reply  $reply
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reply $reply)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,11 +83,18 @@ class ReplyController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Reply  $reply
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Reply $reply)
+    public function destroy($id)
     {
         //
+    }
+    public function CommentsManager(){
+        $user=Auth::user();
+        $comments = array();
+        return view('comments.comments')
+                                    ->with('comments',$comments);
+        
     }
 }
